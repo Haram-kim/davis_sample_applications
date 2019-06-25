@@ -5,7 +5,11 @@
 <arg name="event" default="/dvs/events"/>
 <arg name="imu" default="/dvs/imu"/>
 <arg name="info" default="/dvs/camera_info"/>
+<!-- rename the vicon -->
 <arg name="vicon" default="/vicon/lsi_asus/lsi_asus"/>
+<arg name="image_stereo" default="/camera/rgb/image_color"/>
+<arg name="depth" default="/camera/depth_registered/image"/>
+
 <arg name="setting" default="DAVIS240C.yaml"/>
 <arg name="args" default=""/>
 
@@ -35,6 +39,8 @@
 	<remap from="/event" to="$(arg event)"/>
 	<remap from="/imu" to="$(arg imu)"/>
 	<remap from="/vicon" to="$(arg vicon)"/>
+	<remap from="/image_stereo" to="$(arg image_stereo)"/>
+	<remap from="/depth" to="$(arg depth)"/>
 </node>
 
 </launch>
