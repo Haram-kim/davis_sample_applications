@@ -13,7 +13,10 @@
 <arg name="setting" default="DAVIS240C.yaml"/>
 <arg name="args" default=""/>
 
-<include file="$(find vicon_bridge)/launch/vicon.launch"/>
+<!--include file="$(find vicon_bridge)/launch/vicon.launch"/-->
+<!--include file="$(find freenect_launch)/launch/freenect.launch">
+	<param name="depth_registration" value="yes"/>
+</include-->
 
 <!-- camera driver -->
 <node name="davis_ros_driver" pkg="davis_ros_driver" type="davis_ros_driver">
@@ -31,6 +34,12 @@
 <!-- display -->
 <node name="image_view" pkg="image_view" type="image_view">
 	<remap from="image" to="dvs_rendering"/>
+</node>
+<node name="image_view_depth" pkg="image_view" type="image_view">
+	<remap from="image" to="$(arg depth)"/>
+</node>
+<node name="image_view_rgb" pkg="image_view" type="image_view">
+	<remap from="image" to="$(arg image_stereo)"/>
 </node>
 
 <!-- <include file="$(find dvs_renderer)/launch/davis_mono.launch"/> -->
